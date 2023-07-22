@@ -1,60 +1,88 @@
 #include "main.h"
+#include <stdio.h>
+#include <stdarg.h>
+#include <unistd.h>
 
-#define BUFF_SIZE 1024
-
+/**
+ * _printf - Custom implementation of printf function
+ * @format: The format string to be printed
+ *
+ * Return: The number of characters printed (excluding the null byte)
+ */
 int _printf(const char *format, ...)
 {
-	int i, printed = 0, printed_chars = 0;
-	int flags, width, precision, size, buff_ind = 0;
-	va_list list;
-	char buffer[BUFF_SIZE];
+	int printed_chars = 0;
+	va_list args;
+	char *str;
 
 	if (format == NULL)
 		return (-1);
 
-	va_start(list, format);
+	va_start(args, format);
 
-	for (i = 0; format && format[i] != '\0'; i++)
+	while (*format)
 	{
-		if (format[i] != '%')
+		if (*format == '%')
 		{
-			buffer[buff_ind++] = format[i];
-			if (buff_ind == BUFF_SIZE)
-				print_buffer(buffer, &buff_ind);
-			printed_chars++;
+			format++;
+
+			switch (*format)
+			{
+				case 'c':
+					printed_chars += print_char(va_arg(args, int));
+					break;
+				case 's':
+					str = va_arg(args, char *);
+					printed_chars += print_string(str);
+					break;
+				case '%':
+					printed_chars += write(1, &(*format), 1);
+					break;
+				default:
+					printed_chars += write(1, "%", 1);
+					printed_chars += write(1, &(*format), 1);
+			}
 		}
 		else
 		{
-			print_buffer(buffer, &buff_ind);
-			flags = get_flags(format, &i);
-			width = get_width(format, &i, list);
-			precision = get_precision(format, &i, list);
-			size = get_size(format, &i);
-			++i;
-			printed = handle_print(format, &i, list, buffer,
-				flags, width, precision, size);
-			if (printed == -1)
-			{
-				va_end(list);
-				return (-1);
-			}
-			printed_chars += printed;
+			printed_chars += write(1, &(*format), 1);
 		}
+		format++;
 	}
-
-	print_buffer(buffer, &buff_ind);
-
-	va_end(list);
-
+	va_end(args);
 	return (printed_chars);
 }
 
-void print_buffer(char buffer[], int *buff_ind)
+/**
+ * print_char - Print a single character to stdout
+ * @c: The character to be printed
+ *
+ * Return: 1 (always)
+ */
+int print_char(char c)
 {
-	if (*buff_ind > 0)
+	return (write(1, &c, 1));
+}
+
+/**
+ * print_string - Print a string to stdout
+ * @str: The string to be printed
+ *
+ * Return: The number of characters printed
+ */
+int print_string(char *str)
+{
+	int i = 0;
+
+	if (str == NULL)
+		str = "(null)";
+
+	while (str[i])
 	{
-		write(1, &buffer[0], *buff_ind);
-		*buff_ind = 0;
+		write(1, &str[i], 1);
+		i++;
 	}
+
+	return (i);
 }
 
