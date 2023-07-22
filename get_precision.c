@@ -1,17 +1,5 @@
 #include "main.h"
-#include <stdio.h>
-#include <stdarg.h>
 
-/**
- * is_digit - Checks if a character is a digit (0-9)
- * @c: The character to check
- *
- * Return: 1 if the character is a digit, otherwise 0.
- */
-int is_digit(char c)
-{
-	return (c >= '0' && c <= '9');
-}
 /**
  * get_precision - Calculates the precision for printing
  * @format: Formatted string in which to print the arguments
@@ -30,7 +18,7 @@ int get_precision(const char *format, int *i, va_list list)
 
 	precision = 0;
 
-	while (format[curr_i] != '\0')
+	for (curr_i += 1; format[curr_i] != '\0'; curr_i++)
 	{
 		if (is_digit(format[curr_i]))
 		{
@@ -44,10 +32,7 @@ int get_precision(const char *format, int *i, va_list list)
 			break;
 		}
 		else
-		{
 			break;
-		}
-		curr_i++;
 	}
 
 	*i = curr_i - 1;
