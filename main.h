@@ -19,14 +19,14 @@
 #define S_SHORT 1
 
 /**
- * struct fmt - Struct op
+ * struct fmtt - Struct definition
  *
- * @fmt: The format.
- * @fn: The function associated.
+ * @fmtt: The format of the specified type
+ * @fn: The pointer to the specified format.
  */
-struct fmt
+struct fmtt
 {
-	char fmt;
+	char fmtt;
 	int (*fn)(va_list, char[], int, int, int, int);
 };
 
@@ -37,20 +37,18 @@ struct fmt
  * @fmt: The format.
  * @fm_t: The function associated.
  */
-typedef struct fmt fmt_t;
+typedef struct fmtt fmt_t;
 
 int _printf(const char *format, ...);
-int handle_print(const char *fmt, int *i,
+int handle_print(const char *fmtt, int *i,
 va_list list, char buffer[], int flags, int width, int precision, int size);
 
-/****************** FUNCTIONS ******************/
-
 /* Funtions to print chars and strings */
-int print_char(va_list types, char buffer[],
+int print_c(va_list types, char buffer[],
 	int flags, int width, int precision, int size);
-int print_string(va_list types, char buffer[],
+int print_s(va_list types, char buffer[],
 	int flags, int width, int precision, int size);
-int print_percent(va_list types, char buffer[],
+int print_%(va_list types, char buffer[],
 	int flags, int width, int precision, int size);
 
 /* Functions to print numbers */
