@@ -48,7 +48,7 @@ int print_c(va_list types, char buffer[],
 	int flags, int width, int precision, int size);
 int print_s(va_list types, char buffer[],
 	int flags, int width, int precision, int size);
-int print_%(va_list types, char buffer[],
+int print_percentage(va_list types, char buffer[],
 	int flags, int width, int precision, int size);
 
 /* Functions to print numbers */
