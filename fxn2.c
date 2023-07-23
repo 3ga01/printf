@@ -32,10 +32,9 @@ int print_unsigned(va_list types, char buffer[],
 
 	i++;
 
-	return (write_unsgnd(0, i, buffer, flags, width, precision, size));
+	return (write_uint(0, i, buffer, flags, width, precision, size));
 }
 
-/************* PRINT UNSIGNED NUMBER IN OCTAL  ****************/
 /**
  * print_octal - Prints an unsigned number in octal notation
  * @types: Lista of arguments
@@ -74,7 +73,7 @@ int print_octal(va_list types, char buffer[],
 
 	i++;
 
-	return (write_unsgnd(0, i, buffer, flags, width, precision, size));
+	return (write_uint(0, i, buffer, flags, width, precision, size));
 }
 
 /************** PRINT UNSIGNED NUMBER IN HEXADECIMAL **************/
@@ -157,5 +156,5 @@ int print_hexa(va_list types, char map_to[], char buffer[],
 
 	i++;
 
-	return (write_unsgnd(0, i, buffer, flags, width, precision, size));
+	return (write_uint(0, i, buffer, flags, width, precision, size));
 }
