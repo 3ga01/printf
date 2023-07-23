@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdarg.h>
 
 
 /**
@@ -16,7 +17,7 @@ int print_c(va_list types, char buffer[],
 {
 	char c = va_arg(types, int);
 
-	return (handle_write_char(c, buffer, flags, width, precision, size));
+	return (print_char(c, buffer, flags, width, precision, size));
 }
 
 /**
@@ -29,7 +30,7 @@ int print_c(va_list types, char buffer[],
  * @size: Size specifier
  * Return: string(success)
  */
-int print_string(va_list types, char buffer[],
+int print_s(va_list types, char buffer[],
 	int flags, int width, int precision, int size)
 {
 	int length = 0, i;
@@ -137,7 +138,7 @@ int print_int(va_list types, char buffer[],
 
 	i++;
 
-	return (write_number(is_negative, i, buffer, flags, width, precision, size));
+	return (print_num(is_negative, i, buffer, flags, width, precision, size));
 }
 
 /************************* PRINT BINARY *************************/
