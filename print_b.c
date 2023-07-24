@@ -12,19 +12,19 @@
  * Return: Numbers of char printed.(success)
  */
 int print_b(va_list args, char output_buffer[],
-		int flags, int width, int precision, int size)
+            int custom_flags, int custom_width, int custom_precision, int custom_size)
 {
 	unsigned int arr[32];
 	int count;
 	unsigned int x, y, i, sum;
 
 	UNUSED(output_buffer);
-	UNUSED(flags);
-	UNUSED(width);
-	UNUSED(precision);
-	UNUSED(size);
+    UNUSED(custom_flags);
+    UNUSED(width);
+    UNUSED(custom_precision);
+    UNUSED(custom_size);
 
-	y = 2147483648;
+    y = 2147483648;
 	x = va_arg(args, unsigned int);
 	arr[0] = x / y;
 	for (i = 1; i < 32; i++)
