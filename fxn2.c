@@ -1,17 +1,16 @@
 #include "main.h"
 
-/************************* PRINT UNSIGNED NUMBER *************************/
 /**
- * print_unsigned - Prints an unsigned number
- * @types: List a of arguments
- * @buffer: Buffer array to handle print
- * @flags:  Calculates active flags
- * @width: get width
- * @precision: Precision specification
- * @size: Size specifier
- * Return: Number of chars printed.
+ * print_ui - Prints an unsigned number
+ * @types: Arg list
+ * @buffer: Array to handle printing
+ * @flags: Active flags
+ * @width: Width
+ * @precision: Precision declaration
+ * @size: Size
+ * Return: Number of chars printed.(success)
  */
-int print_unsigned(va_list types, char buffer[],
+int print_ui(va_list types, char buffer[],
 	int flags, int width, int precision, int size)
 {
 	int i = BUFF_SIZE - 2;

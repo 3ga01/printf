@@ -143,16 +143,16 @@ int print_i(va_list types, char buffer[],
 
 /************************* PRINT BINARY *************************/
 /**
- * print_binary - Prints an unsigned number
- * @types: Lista of arguments
- * @buffer: Buffer array to handle print
- * @flags:  Calculates active flags
- * @width: get width.
- * @precision: Precision specification
- * @size: Size specifier
- * Return: Numbers of char printed.
+ * print_b - Prints a number as binary.
+ * @types: Arg list
+ * @buffer: Array to handle print
+ * @flags: Active flags
+ * @width: Width.
+ * @precision: Precision declaration
+ * @size: Size
+ * Return: Numbers of char printed.(success)
  */
-int print_binary(va_list types, char buffer[],
+int print_b(va_list types, char buffer[],
 	int flags, int width, int precision, int size)
 {
 	unsigned int n, m, i, sum;
