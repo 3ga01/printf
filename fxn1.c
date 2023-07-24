@@ -99,16 +99,16 @@ int print_percentage(va_list types, char buffer[],
 
 /************************* PRINT INT *************************/
 /**
- * print_int - Print int
- * @types: Lista of arguments
- * @buffer: Buffer array to handle print
- * @flags:  Calculates active flags
- * @width: get width.
- * @precision: Precision specification
+ * print_i - Print integer
+ * @types: argList
+ * @buffer: array to handle printing
+ * @flags: active flags
+ * @width: width.
+ * @precision: Precision declaration
  * @size: Size specifier
- * Return: Number of chars printed
+ * Return: Number of chars printed(Success)
  */
-int print_int(va_list types, char buffer[],
+int print_i(va_list types, char buffer[],
 	int flags, int width, int precision, int size)
 {
 	int i = BUFF_SIZE - 2;
