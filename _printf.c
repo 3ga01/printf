@@ -4,8 +4,8 @@ void print_buffer(char buffer[], int *buff_ind);
 
 /**
  * print_buffer - Prints buffer contents
- * @buffer: Array of chars
- * @buff_ind: Index at which to add next char, represents the length.
+ * @buff: Array of chars
+ * @buff_ing: Index at which to add next char, represents the length.
  */
 void print_buffer(char buff[], int *buff_ing)
 {
@@ -61,7 +61,6 @@ int _printf(const char *format, ...)
 
 	va_end(list);
 
-	int y = printed_chars;
-	return (y);
+	return (printed_chars);
 }
 

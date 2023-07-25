@@ -11,10 +11,10 @@
  * @args: List a of args
  * Return: char(success)
  */
-int print_c(va_list args, char output_buffer[],
-            int custom_flags, int width, int precision, int size)
+int print_c(va_list args, char output_buffer[], int custom_flags,
+		int width, int precision, int size)
 {
-    char c = va_arg(args, int);
+	char c = va_arg(args, int);
 
-    return (print_char(c, output_buffer, custom_flags, width, precision, size));
+	return (print_char(c, output_buffer, custom_flags, width, precision, size));
 }
